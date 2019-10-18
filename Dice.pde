@@ -1,4 +1,6 @@
 Die dire;
+int sume = 0;
+
 void setup()
 {
   size(600, 600);
@@ -13,8 +15,14 @@ void draw()
       Die dire = new Die(e, (i + ((int)(Math.random()*60))-10));
       dire.show();
       dire.roll();
+      sume = sume + dire.adder;
+      println(sume);
+      
     }
   }
+  textSize(26);
+      text(sume, 10, 50);
+      sume = 0;
 }
 void mousePressed()
 {
@@ -24,12 +32,13 @@ class Die //models one single dice cube
 {
   int value;
   int mx, my;
-
+  int adder = 1;
   Die(int x, int y) //constructor
   {
     value = (int)(Math.random()*6);
     my = y;
     mx = x;
+   
   }
   void roll()
   {
@@ -38,17 +47,20 @@ class Die //models one single dice cube
     if (number == 1)
     {
       rect((mx + 24), (my + 24), 13, 13, 7);
+      adder = 1;
     }
     if (number == 2)
     {
       rect((mx + 40), (my + 40), 13, 13, 7);
       rect((mx + 8 ), (my + 8 ), 13, 13, 7);
+      adder = 2;
     }
     if (number == 3)
     {
       rect((mx + 24), (my + 24), 13, 13, 7);
       rect((mx + 40), (my + 40), 13, 13, 7);
       rect((mx + 8 ), (my + 8 ), 13, 13, 7);
+      adder = 3;
     }
     if (number == 4)
     {
@@ -56,6 +68,7 @@ class Die //models one single dice cube
       rect((mx + 8 ), (my + 8 ), 13, 13, 7);
       rect((mx + 8), (my + 40), 13, 13, 7);
       rect((mx + 40 ), (my + 8 ), 13, 13, 7);
+      adder = 4;
     }
     if (number == 5)
     {
@@ -64,6 +77,7 @@ class Die //models one single dice cube
       rect((mx + 8 ), (my + 8 ), 13, 13, 7);
       rect((mx + 8), (my + 40), 13, 13, 7);
       rect((mx + 40 ), (my + 8 ), 13, 13, 7);
+      adder = 5;
     }
     if (number == 6)
     {
@@ -73,6 +87,7 @@ class Die //models one single dice cube
       rect((mx + 40 ), (my + 8 ), 13, 13, 7);
       rect((mx + 8), (my + 24), 13, 13, 7);
       rect((mx + 40), (my + 24), 13, 13, 7);
+      adder = 6;
     }
   }
   void show()
